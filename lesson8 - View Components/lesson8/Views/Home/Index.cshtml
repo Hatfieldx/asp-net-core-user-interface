@@ -1,0 +1,47 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model lesson8.Models.RegistrationModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <form asp-action="Index" method="POST">
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div>
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div>
+            <label asp-for="RegDate"></label>
+            <input asp-for="RegDate" />
+            <span asp-validation-for="RegDate"></span>
+        </div>
+        <div>           
+            <select asp-for="Product" asp-items="@ViewBag.Products"></select>            
+        </div>
+
+        <div>
+            <input type="submit" value="Register" />
+        </div>
+
+    </form>
+
+</body>
+
+<script src="~/jquery/dist/jquery.min.js"></script>
+<script src="~/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+</html>

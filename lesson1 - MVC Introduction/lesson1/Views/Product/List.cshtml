@@ -1,0 +1,62 @@
+﻿@model IEnumerable<lesson1.Models.Product>
+
+@{
+    Layout = null;
+}
+
+@functions{
+    public string GetInfo(int stocks) 
+    {
+        if (stocks == 0)
+            return "нет в наличии";
+        else if (stocks < 5)
+            return "заканчивается";
+        else
+            return "в наличии";
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <ul>
+        <li>@Html.RouteLink("Фильтр по ПС принадлежностям", "default", new { category = "pc" })</li>
+        <li> @Html.RouteLink("Фильтр по офисным принадлежностям", "default", new { category = "office" })</li>
+        <li> @Html.RouteLink("Отключить фильтры", "default", new { category = "" })</li>
+    </ul>
+    <table class="table">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @GetInfo(item.Stocks)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Подробнее...", "Details", "Product", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p>@Html.ActionLink("Скачать материалы урока", "GetFile", "Product")</p>
+
+    <p>@Html.ActionLink("Скачать файл с данными", "GetDataFile", "Product")</p>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿
+    @{
+        Layout = "_Layout";
+    }
+
+
+@section VertPanel{
+
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link active" asp-controller="SubMenu" asp-action="Menu1">Menu 1</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="SubMenu" asp-action="Menu2">Menu 2</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="SubMenu" asp-action="Menu3">Menu 3</a>
+        </li>
+    </ul>
+
+
+
+}
+
+@RenderBody()

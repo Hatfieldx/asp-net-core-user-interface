@@ -1,0 +1,37 @@
+﻿@model lesson3.Models.SolversView
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        li {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculate</h1>
+    <form method="post">
+        <label for="numx">Num X</label>
+        <input type="number" name="numx" required min="0" value=@Model.X> <br />
+        <label for="numy">Num Y</label>
+        <input type="number" name="numy" required min="0" value=@Model.Y > <br />
+        <label for="result">Result</label>
+        <input type="text" readonly name="result" value=@Model.Result > <br />
+        <ul style="list-style-type:none">
+        <li><input type="submit" value="+" asp-route-operation ="0" asp-action="Index" asp-controller="Calc"></li>
+        <li><input type="submit" value="-" asp-route-operation="1" asp-action="Index" asp-controller="Calc"></li>
+        <li><input type="submit" value="x" asp-route-operation="2" asp-action="Index" asp-controller="Calc"></li>
+        <li><input type="submit" value="/" asp-route-operation="3" asp-action="Index" asp-controller="Calc"></li>
+        </ul>
+    </form>
+    <h2>@ViewData["userAgent"]</h2>
+</body>
+</html>
